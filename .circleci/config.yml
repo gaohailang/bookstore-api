@@ -35,3 +35,17 @@ jobs:
 
       # run tests!
       - run: yarn test
+  docker:
+    working_directory:  ~/repo
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+        name: Docker
+        command: |
+          datestr=`date '+%Y-%m-%d'`
+          docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -t sivagao/bookstore-api:$datestr .
+          docker push sivagao/bookstore-api:$datestr
