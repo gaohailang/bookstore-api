@@ -1,16 +1,6 @@
 const scrapeIt = require("scrape-it");
 var cheerio = require('cheerio')
 
-// formmater
-
-// meta: {
-//   count: 0
-// },
-// data: [
-//
-// ]
-
-
 function reviews(bookId, cb) {
   const RE_REVIVE_COUNT = /全部书评\s\((\d*)\)/ // assert 全部书评 (158)
   scrapeIt(`https://m.douban.com/book/subject/${bookId}/reviews`, {
