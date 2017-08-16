@@ -36,8 +36,8 @@ jobs:
       # run tests!
       - run: yarn test
       - run:
-        command: |
-          datestr=`date '+%Y-%m-%d'`
-          docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t sivagao/bookstore-api:$datestr .
-          docker push sivagao/bookstore-api:$datestr
+          command: |
+            datestr=`date '+%Y-%m-%d'`
+            docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+            docker build -t sivagao/bookstore-api:$datestr .
+            docker push sivagao/bookstore-api:$datestr
