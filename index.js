@@ -12,9 +12,9 @@ const douban = require('./helpers/scrapit-douban')
 var {review, reviews, doulist} = douban
 
 
-app.use('/proxy/douban_api', proxy({
+app.use('/api/proxy/douban_api', proxy({
   pathRewrite: {
-    '^/proxy/douban_api': '',
+    '^/api/proxy/douban_api': '',
   },
   agent  : https.globalAgent,
   target: HostDoubanApi,
@@ -22,9 +22,9 @@ app.use('/proxy/douban_api', proxy({
 }))
 
 
-app.use('/proxy/douban_m_rexxvar', proxy({
+app.use('/api/proxy/douban_m_rexxvar', proxy({
   pathRewrite: {
-    '^/proxy/douban_m_rexxvar': '',
+    '^/api/proxy/douban_m_rexxvar': '',
   },
   agent  : https.globalAgent,
   target: HostDoubanMRexxar,
@@ -35,19 +35,19 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 })
 
-app.get('/douban/book/:id/reviews', (req, res)=>{
+app.get('/api/douban/book/:id/reviews', (req, res)=>{
   reviews(req.params.id, (data)=>{
     res.json(data)
   })
 })
 
-app.get('/douban/book/review/:id', (req, res)=>{
+app.get('/api/douban/book/review/:id', (req, res)=>{
   review(req.params.id, (data)=>{
     res.json(data)
   })
 })
 
-app.get('/douban/doulist/:id/:page', (req, res)=>{
+app.get('/api/douban/doulist/:id/:page', (req, res)=>{
   doulist(req.params.id, req.params.page, (data)=>{
     res.json(data)
   })

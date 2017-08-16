@@ -12,7 +12,7 @@ describe('douban related api', ()=>{
 
   it('should get book reviews', (done)=>{
     agent
-    .get('/douban/book/25782902/reviews')
+    .get('/api/douban/book/25782902/reviews')
     .expect(200)
     .expect(({body})=>{
       should.exist(body.data)
@@ -23,7 +23,7 @@ describe('douban related api', ()=>{
 
   it('should get book review', (done)=>{
     agent
-    .get('/douban/book/review/6495961')
+    .get('/api/douban/book/review/6495961')
     .expect(200)
     .expect(({body})=>{
       should.exist(body.title)
@@ -35,7 +35,7 @@ describe('douban related api', ()=>{
 
   it('should get doulist', (done)=>{
     agent
-    .get('/douban/doulist/36699814/1')
+    .get('/api/douban/doulist/36699814/1')
     .expect(200)
     .expect(({body})=>{
       should.exist(body.title)
@@ -47,7 +47,7 @@ describe('douban related api', ()=>{
 
   it('should get api douban by proxy', (done)=>{
     agent
-    .get('/proxy/douban_api/v2/book/25782902')
+    .get('/api/proxy/douban_api/v2/book/25782902')
     .expect(200)
     .expect(({body})=>{
       should.exist(body.rating)
@@ -61,7 +61,7 @@ describe('douban related api', ()=>{
 
   it('should get m douban by proxy', (done)=>{
     agent
-    .get('/proxy/douban_m_rexxvar/v2/user/9083557/reviews?type=book&start=0&count=50&for_mobile=1')
+    .get('/api/proxy/douban_m_rexxvar/v2/user/9083557/reviews?type=book&start=0&count=50&for_mobile=1')
     .expect(200)
     .expect(({body})=>{
       should.exist(body.total)
