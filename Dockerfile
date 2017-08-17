@@ -1,5 +1,10 @@
 FROM circleci/node:7.10
 
+MAINTAINER sivagao@126.com
+
+USER root
+
+# permission error!!
 RUN mkdir -p /opt/bookstore-api
 WORKDIR /opt/bookstore-api
 

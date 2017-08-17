@@ -3,6 +3,7 @@ const app = express()
 const https = require('https')
 const bodyParser   = require('body-parser');
 
+const cors = require('cors')
 const proxy = require('http-proxy-middleware')
 
 const HostDoubanApi = 'https://api.douban.com'
@@ -11,6 +12,7 @@ const HostDoubanMRexxar = 'https://m.douban.com/rexxar/api'
 const douban = require('./helpers/scrapit-douban')
 var {review, reviews, doulist} = douban
 
+app.use(cors())
 
 app.use('/api/proxy/douban_api', proxy({
   pathRewrite: {
