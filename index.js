@@ -64,4 +64,19 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
 
+console.log('ENV: ', process.env.NODE_ENV)
+if (process.env.NODE_ENV === 'prod') {
+  var fs = require('fs');
+
+  var options = {
+    key  : fs.readFileSync('https/private.key'),
+    ca   : fs.readFileSync('https/mydomain.csr'),
+    cert : fs.readFileSync('https/primary.crt')
+  }
+
+  https.createServer(options, app).listen(8443, '', null, function() {
+    console.log('Server listening on port %d', this.address().port);
+  })
+}
+
 module.exports = exports = app;
